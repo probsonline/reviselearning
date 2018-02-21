@@ -1,0 +1,6 @@
+git config --local user.githubid "detech"
+git config --local user.email "deepembtech@gmail.com"
+git config --get user.name
+git config --get user.email
+git config --get user.githubid
+
