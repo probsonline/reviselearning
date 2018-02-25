@@ -6,7 +6,8 @@ int main(int argc, const char * argv[]) {
 //    template_demo();
 //    vector_demo();
 //    queu_demo();
-    list_demo();
+//    list_demo();
+    map_demo();
     return 0;
 }
 

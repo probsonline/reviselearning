@@ -16,5 +16,6 @@ void template_demo();
 void vector_demo();
 void queu_demo();
 void list_demo();
+void map_demo();
 
 #endif /* demo_h */
