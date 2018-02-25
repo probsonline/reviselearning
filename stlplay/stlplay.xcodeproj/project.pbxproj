@@ -13,6 +13,8 @@
 		8A3E016B203ECCD800C5A3E4 /* queuedemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8A3E016A203ECCD800C5A3E4 /* queuedemo.cpp */; };
 		8A3E016D203ECD4900C5A3E4 /* templatedemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8A3E016C203ECD4900C5A3E4 /* templatedemo.cpp */; };
 		8AD83E9A2042BF4B00F85C06 /* mapdemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AD83E992042BF4B00F85C06 /* mapdemo.cpp */; };
+		8AD83E9F2042DFE500F85C06 /* multimapdemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AD83E9E2042DFE500F85C06 /* multimapdemo.cpp */; };
+		8AD83EA12042E3D700F85C06 /* setdemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AD83EA02042E3D700F85C06 /* setdemo.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,6 +38,8 @@
 		8A3E016A203ECCD800C5A3E4 /* queuedemo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = queuedemo.cpp; sourceTree = "<group>"; };
 		8A3E016C203ECD4900C5A3E4 /* templatedemo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = templatedemo.cpp; sourceTree = "<group>"; };
 		8AD83E992042BF4B00F85C06 /* mapdemo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mapdemo.cpp; sourceTree = "<group>"; };
+		8AD83E9E2042DFE500F85C06 /* multimapdemo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = multimapdemo.cpp; sourceTree = "<group>"; };
+		8AD83EA02042E3D700F85C06 /* setdemo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = setdemo.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,8 @@
 				8A3E016A203ECCD800C5A3E4 /* queuedemo.cpp */,
 				8A3E016C203ECD4900C5A3E4 /* templatedemo.cpp */,
 				8AD83E992042BF4B00F85C06 /* mapdemo.cpp */,
+				8AD83E9E2042DFE500F85C06 /* multimapdemo.cpp */,
+				8AD83EA02042E3D700F85C06 /* setdemo.cpp */,
 			);
 			path = stlplay;
 			sourceTree = "<group>";
@@ -136,10 +142,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AD83E9F2042DFE500F85C06 /* multimapdemo.cpp in Sources */,
 				8A3E016D203ECD4900C5A3E4 /* templatedemo.cpp in Sources */,
 				8A3E0164203ECB6800C5A3E4 /* vectorsdemo.cpp in Sources */,
 				8A3E0167203ECC5800C5A3E4 /* demo.cpp in Sources */,
 				8A3E0169203ECCB700C5A3E4 /* listdemo.cpp in Sources */,
+				8AD83EA12042E3D700F85C06 /* setdemo.cpp in Sources */,
 				8A3E016B203ECCD800C5A3E4 /* queuedemo.cpp in Sources */,
 				8AD83E9A2042BF4B00F85C06 /* mapdemo.cpp in Sources */,
 			);
@@ -256,7 +264,9 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = Y3BRDV744N;
+				LINKER_DISPLAYS_MANGLED_NAMES = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
@@ -267,7 +277,9 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = Y3BRDV744N;
+				LINKER_DISPLAYS_MANGLED_NAMES = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
