@@ -17,5 +17,7 @@ void vector_demo();
 void queu_demo();
 void list_demo();
 void map_demo();
+void multimap_demo();
+
 
 #endif /* demo_h */

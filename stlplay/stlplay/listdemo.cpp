@@ -49,7 +49,7 @@ void list_demo(){
     string names[] = {"Naveed", "Nadeem", "Kaleem", "Naeem", "Waseem", "Adeel"};
     int listSize=7;
     list<string> l1(listSize);
-    l1.assign(names, names+6);
+    l1.assign(names, names+6);  //begin , end
     ld.print_list(l1);
 
     list<int> l2(3, 1);

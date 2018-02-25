@@ -7,7 +7,8 @@ int main(int argc, const char * argv[]) {
 //    vector_demo();
 //    queu_demo();
 //    list_demo();
-    map_demo();
+//    map_demo();
+    multimap_demo();
     return 0;
 }
 
