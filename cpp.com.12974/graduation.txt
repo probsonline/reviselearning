@@ -1,0 +1,248 @@
+Known Issues
+===============
+Q: while getting the name of the next bunny, sometimes it coredumps
+A:
+a) It is giving dump because a local variable (string) is being returned and used.
+Local variable scope is lost once function completes execution and so that's why it coredumps.
+The variable should be declared as static for such usage. or better to use a globl. tHis didn't solve the issue
+b) Next I tried to give the string pointer as function argument and change that inside the function. It didn't help either.
+c) Then I thought it's the issue with string out of bound as string is being assigned from with the function so I made the string for which pointer was passed very large but it didn't help
+d) then I tried String refernce instead of the pointer but that didn't help. 
+e) tried using size extension (append string) instead of assignment. Tried string library functions like assign etc. but to no avail
+f) Among all these experiments, one thing was clear that getting the string form the global name pool was not an issue. It was even received back in the caller correctly 
+so the issue then has to be with the assignment to "name" in the structure. Thought of that I was mallocing the strcutre then how would it know what size of string would be give. 
+That set me on the path of the malloc and found out that we must use "new" to allocate memory in c++. malloc is the C way, not c++. Especially when a string is inside a structure, malloc can't take take of that while new can.
+The reason is that malloc gives a raw block of memory, while new actually creates the formatted object and so it's memory is properly accessible. 
+This finally solved the crash. Tested by putting 10K calls to the function in a loop and it didn't crash even a single time. 
+
+
+
+
+
+
+
+
+
+
+
+
+Notes:
+======
+Series are 
+
+Mutant Series: 1 2 4 8 16 32 64 128 256 512 1024
+Birth Series:  2 2 2 4 
+Breed Series: How many series = female/male+female%male eg. 3/2+3%2 = 1+1=2 or e.g. 2/3 
+
+"So long as there is at least one male age 2 or older, for each female bunny in the list age 2 or older;"
+this means, if male>feamle, breed=female else if male<female breed=male
+
+
+random logic error. If a number is selected randomly from the range and that number bunny has already died, b would be null. What to do in that case.
+If we just retry we potentially has an infinite loop
+
+optimization:
+Maitianing a death register and an alive register can help make the random number generator better.
+
+enum color{white, brown, black, spotted}
+enum sex{male, female}
+
+struct bunny{
+enum sex /bool is_male
+enum color
+uint age
+string name
+boo is_radioative
+bool is_dead
+}
+
+struct population{
+	int total_created;
+	int dead_bunnies;
+	int current_population;
+	int males;	//include adults and children
+	int females;
+	int adult_population;
+	int adult_males; //alive
+	int adult_females;	//alive
+	int radioactive_mutants;
+	int normal_bunnies;
+}
+
+int *population_pointer;
+
+int get_adult_male(){
+int cout=0;
+
+for all bunnies
+if bunny is male and age > 1; count++;
+}
+
+int create_bunny(int name, age, color, sex, is_radioactive){
+
+	bunny->age=age;
+	bunny->color=color;
+	bunny->sex=sex;
+	bunny->is_radioactive=is_radioactive;
+	is_radioactive->name=name;
+	
+	population.total_created++;
+	population.current_population++;
+	if(bunny->is_male)
+		population.males++;
+	else
+		population.females++;
+	
+	if(bunny->is_radioactive;
+		radioactive_mutants++;
+	else
+//		normal_bunnies++;
+}
+
+int reproduce_bunnies(){
+	if(population.adult_males>0)
+	for population.adul_females
+		create_bunny()
+}
+
+int age_bunny(){
+	while(populationPointer != null)
+		populationPointer->bunny.age++
+		if(populationPointer->bunny.is_radioactive==false)
+		{		
+			if(	populationPointer->bunny.age > 10)
+				die()
+			
+			if(populationPointer->bunny.age == 2)
+				adult_population++
+				if(populationPointer->bunny.sex == male)
+					adult_males++
+				else
+					adult_female++
+		}
+		else
+			if(	populationPointer->bunny.age >= 50)
+				die()		
+}
+
+population_pointer sort_population(){
+
+
+
+}
+
+void print_population_stats(){
+}
+
+void log_to_file(){
+
+}
+
+int die(bunny *){
+	bunny->is_alive=false;
+	population.dead_bunnies++;
+	population.current_population--;
+	population.adult_population--;
+	if(bunny->is_male)
+		population.adult_males--;
+	else
+		population.adult_females--;
+	
+	if(bunny->is_radioactive;
+		radioactive_mutants--;
+	else
+		normal_bunnies--
+}
+
+int turn_radioactive(bunny){
+		while(radioactive_mutants > 0)
+		//select a random bunny
+		if(	populationPointer->bunny.is_radioative == false)
+			populationPointer->bunny.is_radioative=true;
+			population.radioactive_mutants++
+			population.normal_bunny--;			
+}
+
+food_shortage_femine(){
+	//Kill half the randomly selected bunnies 
+}
+
+start()
+{
+//create 5 bunnies
+}
+
+
+
+play(){
+	
+	while(current_population > 0)
+	{
+		age_bunny()
+		reproduce()
+		turn_radioactive();
+		if(current_population > 1000){
+			food_shortage_femine();
+		}
+	}
+}
+
+====================================================
+Requires:
+variables, data types, and numerical operators
+basic input/output
+logic (if statements, switch statements)
+loops (for, while, do-while)
+arrays
+pseudo random number generation
+strings & string functions
+functions
+structures/classes
+enumerated data
+file input/output
+pointers
+sorting
+linked lists
+advanced classes
+
+Write a program that creates a linked list of bunny objects.
+Each bunny object must have
+Sex: Male, Female (random at creation 50/50)
+color: white, brown, black, spotted
+age : 0-10 (years old)
+Name : randomly chosen at creation from a list of bunny names.
+radioactive_mutant_vampire_bunny: true/false (decided at time of bunny creation 2% chance of true)
+
+At program initialization 5 bunnies must be created and given random colors.
+Each turn afterwards the bunnies age 1 year.
+So long as there is at least one male age 2 or older, for each female bunny in the list age 2 or older;
+a new bunny is created each turn. (i.e. if there was 1 adult male and 3 adult female bunnies, three new bunnies would be born each turn)
+New bunnies born should be the same color as their mother.
+If a bunny becomes older than 10 years old, it dies.
+If a radioactive mutant vampire bunny is born then each turn it will change exactly one non radioactive bunny into a radioactive vampire bunny.
+(if there are two radioactive mutant vampire bunnies two bunnies will be changed each turn and so on...)
+Radioactive vampire bunnies are excluded from regular breeding and do not count as adult bunnies.
+Radioactive vampire bunnies do not die until they reach age 50.
+The program should print a list of all the bunnies in the colony each turn along w/ all the bunnies details, sorted by age.
+The program should also output each turns events such as
+"Bunny Thumper was born!
+Bunny Fufu was born!
+Radioactive Mutant Vampire Bunny Darth Maul was born!
+Bunny Julius Caesar died!
+The program should write all screen output to a file.
+When all the bunnies have died the program terminates.
+If the bunny population exceeds 1000 a food shortage must occur killing exactly half of the bunnies (randomly chosen)
+
+★ Modify the program to run in real time, with each turn lasting 2 seconds, and a one second pause between each announement.
+
+★★ Allow the user to hit the 'k' key to initiate a mass rabit cull! which causes half of all the rabits to be killed (randomly chosen).
+
+★★★★ Modify the program to place the rabits in an 80x80 grid. Have the rabits move one space each turn randomly.
+Mark juvenile males with m, adult males w/ M,
+juvenile females w/ f, adult femails w/ F
+radioactive mutant vampire bunnies with X
+
+Modify the program so that radioactive mutant vampire bunnies only convert bunnies that end a turn on an adjacent square.
+Modify the program so that new babies are born in an empty random adjacent square next to the mother bunny. (if no empty square exits then the baby bunny isn't born)
+
+★★★★★ Modify the program so that it saves each turn to a file and can play back at accelearted speed all subsequent turns.
